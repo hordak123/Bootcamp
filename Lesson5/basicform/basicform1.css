@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #a8e6e3, #c8f0ed);
+    min-height: 100vh;
+    padding: 50px 20px;
+}
+
+form {
+    background-color: white;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    background: linear-gradient(to right, #ff5722, #ff6b3d);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    border-radius: 8px 8px 0 0;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+form > table {
+    width: 100%;
+    position: static !important;
+    left: 0 !important;
+    padding: 40px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    color: #2962ff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: right;
+    padding-right: 20px;
+    vertical-align: top;
+    padding-top: 12px;
+    width: 150px;
+}
+
+td {
+    padding: 8px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    min-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #999;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #2962ff;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+td input[type="checkbox"] + text,
+td label {
+    color: #ff6b3d;
+    font-size: 17px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Style for checkbox labels */
+tr td:has(input[type="checkbox"]) {
+    color: #ff6b3d;
+    font-size: 17px;
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+/* Inner table for hobbies */
+td table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+td table td {
+    padding: 8px 10px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+    padding: 10px 35px;
+    font-size: 16px;
+    border: 2px solid #999;
+    border-radius: 4px;
+    background-color: #d9d9d9;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+    background-color: #c0c0c0;
+    border-color: #666;
+}
+
+input[type="submit"]:active,
+input[type="reset"]:active {
+    transform: scale(0.98);
+}
