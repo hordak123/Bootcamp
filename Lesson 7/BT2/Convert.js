@@ -17,4 +17,4 @@ else if (c1 == "VND") {
         r = a / 27000;
     }
 }
-document.getElementById("result").innerHTML = 'Result: ' + r + ' ' + c2;}
+document.getElementById("result").innerHTML = 'Result: ' + r.toLocaleString('vi-VN') + ' ' + c2;}
