@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BT2</title>
+    <script src="Convert.js"></script>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <th colspan="2">Amount</th>
+                <th>From Currency</th>
+                <th>To Currency</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="text" id="amount"></td>
+                <td>
+                    <select id="cur1">
+                        <option value="USD" selected>USD</option>
+                        <option value="VND">VND</option>
+                        </select>
+                </td>
+                <td>
+                    <select id="cur2">
+                        <option value="USD">USD</option>
+                        <option value="VND" selected>VND</option>
+                    </select>
+                </td>
+                <td><button onclick="Convert()">Convert</button></td>
+            </tr>
+        </table>
+    </form>
+<p id="result"></p>
+</body>
+</html>
