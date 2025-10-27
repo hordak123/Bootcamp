@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day count</title>
+</head>
+<body>
+<form>
+    <label for="month">Tháng</label>
+    <input type="number" id="month" name="month">
+    <input type="button" value="Tính số ngày" onclick="dayCount()"><br><br>
+    <p id="result"></p>
+</form>
+<script>
+    function dayCount() {
+        let month = parseInt(document.getElementById("month").value);
+        let day;
+        switch (month) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                day = 31;
+                break;
+            case 2:
+                day = "28 hoặc 29";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                day = 30;
+                break;
+        }
+        if (month <= 12) {
+            document.getElementById("result").innerHTML = "Tháng " + month + " có " + day + " ngày";
+        } else {
+            document.getElementById("result").innerHTML = "Không tồn tại tháng này";
+        }    }
+</script>
+</body>
+</html>
