@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good Fast Cheap?</title>
+    <style>
+        .toggle-button-demo {
+            text-align: center;
+        }
+
+        h4 {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .toggle-ios {
+            display: none;
+        }
+
+        .toggle-ios + .toggle-btn {
+            outline: 0;
+            display: block;
+            width: 4em;
+            margin: 0 auto;
+            height: 2em;
+            position: relative;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: #fbfbfb;
+            border-radius: 2em;
+            padding: 2px;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            border: 1px solid #e8eae9;
+        }
+
+        .toggle-ios + .toggle-btn:after {
+            position: relative;
+            display: block;
+            content: "";
+            width: 50%;
+            height: 100%;
+            left: 0;
+            border-radius: 2em;
+            background: #fbfbfb;
+            -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+            transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+        }
+
+        .toggle-ios:checked + .toggle-btn {
+            background: #86d993;
+        }
+
+        .toggle-ios:checked + .toggle-btn:after {
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="toggle-button-demo">
+    <h4>Good</h4>
+    <input class="toggle toggle-ios" id="toggle1" type="checkbox" onchange="checkLimit(1)"/>
+    <label class="toggle-btn" for="toggle1"></label>
+    <h4>Fast</h4>
+    <input class="toggle toggle-ios" id="toggle2" type="checkbox" onchange="checkLimit(2)"/>
+    <label class="toggle-btn" for="toggle2"></label>
+    <h4>Cheap</h4>
+    <input class="toggle toggle-ios" id="toggle3" type="checkbox" onchange="checkLimit(3)"/>
+    <label class="toggle-btn" for="toggle3"></label>
+</div>
+<script>
+    function checkLimit(toggleNumber) {
+        const toggle1 = document.getElementById("toggle1");
+        const toggle2 = document.getElementById("toggle2");
+        const toggle3 = document.getElementById("toggle3");
+        switch (toggleNumber) {
+            case 1:
+                if (toggle1.checked === true && toggle2.checked === true && toggle3.checked === true) {
+                    document.getElementById("toggle2").checked = false;
+                }
+                break;
+            case 2:
+                if (toggle1.checked === true && toggle2.checked === true && toggle3.checked === true) {
+                    document.getElementById("toggle3").checked = false;
+                }
+                break;
+            case 3:
+                if (toggle1.checked === true && toggle2.checked === true && toggle3.checked === true) {
+                    document.getElementById("toggle1").checked = false;
+                }
+                break;
+        }
+    }
+</script>
+</body>
+</html>
