@@ -36,30 +36,64 @@
 </form>
 <script>
     let number = document.getElementById("number").value;
-function inpt(i){
-    switch(i){
-        case 1: number = number + "1"; break;
-        case 2: number = number + "2"; break;
-        case 3: number = number + "3"; break;
-        case 4: number = number + "4"; break;
-        case 5: number = number + "5"; break;
-        case 6: number = number + "6"; break;
-        case 7: number = number + "7"; break;
-        case 8: number = number + "8"; break;
-        case 9: number = number + "9"; break;
-        case 0: number = number + "0"; break;
-        case 10: number = number + "+"; break;
-        case 11: number = number + "-"; break;
-        case 12: number = number + "*"; break;
-        case 13: number = number + "/"; break;
-        case 14: number = ""; break;
+
+    function inpt(i) {
+        switch (i) {
+            case 1:
+                number = number + "1";
+                break;
+            case 2:
+                number = number + "2";
+                break;
+            case 3:
+                number = number + "3";
+                break;
+            case 4:
+                number = number + "4";
+                break;
+            case 5:
+                number = number + "5";
+                break;
+            case 6:
+                number = number + "6";
+                break;
+            case 7:
+                number = number + "7";
+                break;
+            case 8:
+                number = number + "8";
+                break;
+            case 9:
+                number = number + "9";
+                break;
+            case 0:
+                number = number + "0";
+                break;
+            case 10:
+                number = number + "+";
+                break;
+            case 11:
+                number = number + "-";
+                break;
+            case 12:
+                number = number + "*";
+                break;
+            case 13:
+                number = number + "/";
+                break;
+            case 14:
+                number = "";
+                break;
+        }
+        document.getElementById("number").value = number;
     }
-    document.getElementById("number").value = number;
-}
-function calculate() {
-        let r = eval(number);
+
+    function calculate() {
+        let display = document.getElementById("number").value;
+        let noSpaces = display.replaceAll(" ", "");
+        let r = eval(noSpaces);
         document.getElementById("number").value = r;
-}
+    }
 </script>
 </body>
 </html>
