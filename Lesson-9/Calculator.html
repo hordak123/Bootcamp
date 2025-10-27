@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<form>
+    <input type="text" id="number">
+    <table>
+        <tr>
+            <td><input id="1" type="button" value="1" onclick="inpt(1)"></td>
+            <td><input id="2" type="button" value="2" onclick="inpt(2)"></td>
+            <td><input id="3" type="button" value="3" onclick="inpt(3)"></td>
+            <td><input id="+" type="button" value="+" onclick="inpt(10)"></td>
+        </tr>
+        <tr>
+            <td><input id="4" type="button" value="4" onclick="inpt(4)"></td>
+            <td><input id="5" type="button" value="5" onclick="inpt(5)"></td>
+            <td><input id="6" type="button" value="6" onclick="inpt(6)"></td>
+            <td><input id="-" type="button" value="-" onclick="inpt(11)"></td>
+        </tr>
+        <tr>
+            <td><input id="7" type="button" value="7" onclick="inpt(7)"></td>
+            <td><input id="8" type="button" value="8" onclick="inpt(8)"></td>
+            <td><input id="9" type="button" value="9" onclick="inpt(9)"></td>
+            <td><input id="*" type="button" value="*" onclick="inpt(12)"></td>
+        </tr>
+        <tr>
+            <td><input type="reset" value="C" onclick="inpt(14)"></td>
+            <td><input id="0" type="button" value="0" onclick="inpt(0)"></td>
+            <td><input type="button" value="=" onclick="calculate()"></td>
+            <td><input id="/" type="button" value="/" onclick="inpt(13)"></td>
+        </tr>
+    </table>
+</form>
+<script>
+    let number = document.getElementById("number").value;
+function inpt(i){
+    switch(i){
+        case 1: number = number + "1"; break;
+        case 2: number = number + "2"; break;
+        case 3: number = number + "3"; break;
+        case 4: number = number + "4"; break;
+        case 5: number = number + "5"; break;
+        case 6: number = number + "6"; break;
+        case 7: number = number + "7"; break;
+        case 8: number = number + "8"; break;
+        case 9: number = number + "9"; break;
+        case 0: number = number + "0"; break;
+        case 10: number = number + "+"; break;
+        case 11: number = number + "-"; break;
+        case 12: number = number + "*"; break;
+        case 13: number = number + "/"; break;
+        case 14: number = ""; break;
+    }
+    document.getElementById("number").value = number;
+}
+function calculate() {
+        let r = eval(number);
+        document.getElementById("number").value = r;
+}
+</script>
+</body>
+</html>
