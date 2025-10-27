@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Do You Love Me?</title>
+    <style>
+        #No {
+            position: absolute;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <h1>Do You Love Me?</h1>
+    <button type="button" id="Yes" onclick="alert('<3')">Yes</button>
+    <button type="button" id="No" onmouseover="random()">No</button>
+</form>
+<script>
+    function random() {
+        const button = document.getElementById("No");
+        const buttonWidth = button.offsetWidth;
+        const buttonHeight = button.offsetHeight;
+
+        const maxX = window.innerWidth - buttonWidth - 20;
+        const maxY = window.innerHeight - buttonHeight - 20;
+
+        let x = Math.random() * maxX;
+        let y = Math.random() * maxY;
+
+        x = Math.max(10, x);
+        y = Math.max(10, y);
+
+        button.style.left = x + "px";
+        button.style.top = y + "px";
+    }
+</script>
+</body>
+</html>
