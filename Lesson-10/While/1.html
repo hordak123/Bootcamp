@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+<script>
+    let num = 0;
+    let sum = 0;
+    while (num != -1) {
+        num = parseInt(prompt('Enter a number (enter -1 to sum up all the numbers you put in)'));
+        if (num == -1){
+            break;
+        }
+        sum += num;
+    }
+    document.write('The sum is ' + sum);
+</script>
+</body>
+</html>
