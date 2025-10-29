@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<script>
+    for (let i = 1; i <= 5; i++) {
+        if (i === 1 || i === 5) {
+            for (let j = 1; j <= 10; j++) {
+                document.write("*");
+            }
+            document.write("</br>");
+        } else {
+            document.write("*");
+            for (let k = 2; k <= 9; k++) {
+                document.write("&nbsp;&nbsp");
+            }
+            document.write("*");
+            document.write("</br>");
+        }
+    }
+</script>
+</body>
+</html>

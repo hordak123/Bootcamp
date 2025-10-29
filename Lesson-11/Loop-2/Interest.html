@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interest</title>
+</head>
+<body>
+<form>
+    <label for="deposit">Deposit</label>
+    <input type="text" id="deposit" name="deposit" placeholder="Enter Deposit">
+    <input type="text" id="currency" name="currency" placeholder="Enter currency"><br><br>
+    <label for="interest">Interest per month (%)</label>
+    <input type="text" id="interest" name="interest" placeholder="Enter Interest"><br><br>
+    <label for="term">Term (Month)</label>
+    <input type="text" id="term" name="term" placeholder="Enter Term"><br><br>
+    <input type="button" value="Submit" onclick="calculateInterest()"><br><br>
+    <p id="result"></p>
+</form>
+
+<script>
+    function calculateInterest() {
+        let deposit = parseFloat(document.getElementById("deposit").value);
+        let interest = parseFloat(document.getElementById("interest").value);
+        let term = parseFloat(document.getElementById("term").value);
+        let currency = document.getElementById("currency").value;
+
+        // Kiểm tra input hợp lệ
+        if (isNaN(deposit) || isNaN(interest) || isNaN(term)) {
+            document.getElementById("result").innerHTML = "Please enter valid numbers!";
+            return;
+        }
+
+        let saving = deposit * Math.pow((1 + interest / 100), term);
+        document.getElementById("result").innerHTML = "Your savings is " + saving.toFixed(2) + " " + currency;
+    }
+</script>
+</body>
+</html>

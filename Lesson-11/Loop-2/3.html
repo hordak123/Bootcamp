@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<script>
+    for (let a = 1; a <= 5; a++) {
+        for (let i = 1; i <= a; i++) {
+            document.write("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br></br>");
+
+    for (let b = 1; b <= 5; b++) {
+        for (let j = 5; j >= b; j--) {
+            document.write("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br></br>");
+
+    for (let c = 1; c <= 5; c++) {
+        for (let k = 5; k >= (c + 1); k--) {
+            document.write("&nbsp;&nbsp");
+        }
+        for (let l = 1; l <= c; l++) {
+            document.write("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br></br>");
+
+    for (let d = 1; d <= 5; d++) {
+        for (let m = 1; m <= (d - 1); m++) {
+            document.write("&nbsp;&nbsp");
+        }
+        for (let n = 5; n >= d; n--) {
+            document.write("*");
+        }
+        document.write("</br>");
+    }
+    document.write("</br></br>");
+</script>
+</body>
+</html>
