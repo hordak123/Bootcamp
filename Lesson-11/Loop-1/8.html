@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Đoán Số</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🎮 Game Đoán Số</h1>
+    <button onclick="playGame()">Chơi</button>
+</div>
+
+<script>
+    function playGame() {
+        // Bước 1: Nhập khoảng số
+        let range = prompt("Bạn muốn đoán số trong khoảng nào? (Ví dụ: nhập '100' để đoán từ 1-100)");
+
+        if (range === null || range === "") {
+            alert("Bạn đã hủy trò chơi!");
+            return;
+        }
+
+        range = parseInt(range);
+
+        if (isNaN(range) || range <= 0) {
+            alert("Vui lòng nhập một số hợp lệ!");
+            return;
+        }
+
+        // Bước 2: Chọn số ngẫu nhiên
+        let randomNumber = Math.floor(Math.random() * range) + 1;
+        let attempts = 0;
+        let maxAttempts = 3;
+        let guessed = false;
+
+        alert("Tôi đã chọn một số từ 1 đến " + range + ". Bạn có 3 lần đoán!");
+
+        // Bước 3: Cho phép người dùng đoán (tối đa 3 lần)
+        while (attempts < maxAttempts && !guessed) {
+            attempts++;
+            let attemptsLeft = maxAttempts - attempts;
+
+            let guess = prompt("Lần đoán " + attempts + "/" + maxAttempts + ": Nhập số bạn đoán (1-" + range + ")");
+
+            if (guess === null) {
+                alert("Bạn đã hủy trò chơi! Số cần đoán là: " + randomNumber);
+                return;
+            }
+
+            guess = parseInt(guess);
+
+            if (isNaN(guess) || guess < 1 || guess > range) {
+                alert("Vui lòng nhập số hợp lệ từ 1 đến " + range + "!");
+                attempts--; // Không tính lần đoán này
+                continue;
+            }
+
+            // Bước 4: So sánh và thông báo
+            if (guess === randomNumber) {
+                alert("🎉 Chúc mừng! Bạn đã đoán đúng số " + randomNumber + " sau " + attempts + " lần đoán!");
+                guessed = true;
+            } else if (guess > randomNumber) {
+                if (attemptsLeft > 0) {
+                    alert("❌ Số bạn đoán LỚN HƠN số cần tìm. Bạn còn " + attemptsLeft + " lần đoán!");
+                } else {
+                    alert("❌ Số bạn đoán LỚN HƠN số cần tìm. Hết lượt! Số cần đoán là: " + randomNumber);
+                }
+            } else {
+                if (attemptsLeft > 0) {
+                    alert("❌ Số bạn đoán NHỎ HƠN số cần tìm. Bạn còn " + attemptsLeft + " lần đoán!");
+                } else {
+                    alert("❌ Số bạn đoán NHỎ HƠN số cần tìm. Hết lượt! Số cần đoán là: " + randomNumber);
+                }
+            }
+        }
+
+        // Hỏi chơi lại
+        if (guessed) {
+            let playAgain = confirm("Bạn có muốn chơi lại không?");
+            if (playAgain) {
+                playGame();
+            }
+        }
+    }
+</script>
+</body>
+</html>
+</body>
+</html>

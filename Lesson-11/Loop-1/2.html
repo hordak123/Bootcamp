@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<script>
+    let temp = parseFloat(prompt("Input current temperature"));
+    if (temp <= -273) {
+        alert('You cannot survive at this temperature!');
+    } else while (temp > -273) {
+        if (temp < 20) {
+            alert("Please increase temperature");
+            temp = parseFloat(prompt("Input current temperature"));
+        } else if (temp > 100) {
+            alert("Please decrease temperature");
+            temp = parseFloat(prompt("Input current temperature"));
+        } else {
+            alert("The temperature is okay");
+            break
+        }
+    }
+</script>
+</body>
+</html>

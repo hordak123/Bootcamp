@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Nhập số lượng số Fibonacci chia hết cho 5 cần tìm:"));
+
+    let count = 0;
+    let f0 = 0;
+    let f1 = 1;
+
+    while (n === 0) {
+        n = parseInt(prompt("Nhập số lượng số Fibonacci chia hết cho 5 cần tìm:"))
+    }
+
+    document.write(n + " số Fibonacci đầu tiên chia hết cho 5:<br>");
+
+    // Kiểm tra f0
+    if (n === 1) {
+        document.write(f0 + "<br>");
+        count++;
+    }
+
+    // Tìm các số tiếp theo
+    while (count < n) {
+        let fn = f0 + f1;
+        if (fn % 5 === 0) {
+            document.write(fn + "<br>");
+            count++;
+        }
+        f0 = f1;
+        f1 = fn;
+    }
+</script>
+</body>
+</html>

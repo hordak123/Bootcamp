@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6</title>
+</head>
+<body>
+<script>
+    let n = parseInt(prompt("Tính tổng của n số tự nhiên đầu tiên chia hết cho 7"));
+    let sum = 0;
+    for (let i = 0; i < n; i++) { // số 0 được tính là số tự nhiên
+        sum += i;
+    }
+    let sumprod = sum * 7;
+    document.write("Tổng của " + n + " số tự nhiên đầu tiên chia hết cho 7 là: " + sumprod);
+</script>
+</body>
+</html>
