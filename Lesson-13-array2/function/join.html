@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input length of array:'));
+    for (let i = 0; i < leng; i++) {
+        let p = prompt('Input element index ' + i);
+        arr.push(p);
+    }
+    document.write(arr.join(', '));
+</script>
+</body>
+</html>
