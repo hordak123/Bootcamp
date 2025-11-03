@@ -1,10 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Demo</title>
 </head>
 <body>
-$END$
+<script>
+    // for(khoi_tao; dieu_kien; tang_gia_tri)
+    // debugger;
+    // for (let i = 1; i <= 10; i++) {
+    //     console.log("5 x " + i + " = " + 5 * i);
+    // }
+
+    //     while (condition) {}
+    // let i = 1;
+    // while (i <= 10) {
+    //     console.log("5 x " + i + " = " + 5 * i);
+    //     i++;
+    // }
+
+    // let i = 1;
+    // let sum = 0;
+    // do {
+    //     if (i % 2 === 0) {
+    //         sum += i;
+    //     }
+    //     i++;
+    // } while (i <= 100);
+    // console.log(sum);
+
+    let choice;
+    do {
+        let text = `Mời nhập Menu bên dưới:
+        1. Bò húc
+        2. Mì tôm trứng
+        3. Sting dâu`;
+        choice = parseInt(prompt(text));
+        switch (choice) {
+            case 1:
+                alert('Bạn chọn Bò húc');
+                break;
+            case 2:
+                alert('Bạn chọn Mì tôm trứng');
+                break;
+            case 3:
+                alert('Bạn chọn Sting dâu');
+                break;
+            case 0:
+                alert('Xin tạm biệt');
+                break;
+            default:
+                alert('Xin mời chọn lại');
+                break;
+        }
+    } while (choice !== 0);
+</script>
 </body>
 </html>
