@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swap Case</title>
+</head>
+<body>
+<script>
+    let arr = prompt('Input a string:');
+    let str = arr.split('');
+    let UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    for (let i = 0; i < str.length; i++) {
+        if (UPPER.indexOf(str[i]) !== -1) {
+            str.splice(i, 1, LOWER[UPPER.indexOf(str[i])]);
+        } else if (LOWER.indexOf(str[i]) !== -1) {
+            str.splice(i, 1, UPPER[LOWER.indexOf(str[i])]);
+        }
+    }
+    document.write(str.join(''));
+</script>
+</body>
+</html>
