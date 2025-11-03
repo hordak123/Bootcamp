@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Text Area</title>
+</head>
+<body>
+<h1 style="text-align: center">Type Anything Slowly</h1>
+<center><textarea id="input" cols="50" rows="10" oninput="fill()"></textarea></center>
+<script>
+    function fill() {
+        let target = ' I am a bird!!!';
+        let input = document.getElementById('input').value;
+
+        let index = input.length % target.length;
+        let nextChar = target[index];
+
+        if (input.length > 0) {
+            document.getElementById('input').value = input.slice(0, -1) + nextChar;
+        }
+    }
+</script>
+</body>
+</html>
