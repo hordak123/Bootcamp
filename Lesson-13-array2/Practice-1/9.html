@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<button type="button" onclick="window.location.reload()">Reload</button>
+<script>
+    let a = [];
+    let lenga = parseInt(prompt('Input length of array a'));
+    let b = [];
+    let lengb = parseInt(prompt('Input length of array b'))
+    for (let i = 0; i < lenga; i++) {
+        a.push(Math.floor(Math.random() * (100 - (-100) + 1)) - 100);
+    }
+    for (let j = 0; j < lengb; j++) {
+        b.push(Math.floor(Math.random() * (100 - (-100) + 1)) - 100);
+    }
+    document.getElementById("array").innerHTML = 'Array a: ' + a + '</br> Array b: ' + b;
+    let c = a.concat(b);
+    document.getElementById("result").innerHTML = 'Concatenated array: ' + c;
+</script>
+</body>
+</html>

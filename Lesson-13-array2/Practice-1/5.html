@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="notice"></p>
+<p id="result"></p>
+<button type="button" onclick="window.location.reload()">Reload</button>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input the length of array:'));
+    let min = Math.ceil(parseInt(prompt('Input min of range:')));
+    let max = Math.floor(parseInt(prompt('Input max of range')));
+    while (min > max) {
+        min = Math.ceil(parseInt(prompt('Input min of range:')));
+        max = Math.floor(parseInt(prompt('Input max of range')));
+    }
+    if (max > min) {
+        for (let i = 0; i < leng; i++) {
+            arr.push(Math.floor(Math.random() * (max - min + 1)) + min);
+        }
+    }
+    document.getElementById("array").innerHTML = arr;
+    let isNegative = 0;
+    for (let k = 0; k < leng; k++) {
+        if (arr[k] < 0) isNegative++;
+    }
+    if (isNegative > 0) {
+        document.getElementById("notice").innerHTML = 'These numbers are negative:';
+    } else {
+        document.getElementById("notice").innerHTML = 'There is no negative number!';
+    }
+    for (let j = 0; j < arr.length; j++) {
+        if (arr[j] < 0) {
+            document.getElementById("result").innerHTML += arr[j] + ' at index ' + j + '</br>';
+        }
+    }
+</script>
+</body>
+</html>

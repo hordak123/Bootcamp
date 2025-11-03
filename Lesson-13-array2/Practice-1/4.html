@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<button type="button" onclick="window.location.reload()">Reload</button>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input the length of array:'));
+    for (let i = 0; i < leng; i++) {
+        arr.push(Math.floor(Math.random() * 100));
+    }
+    document.getElementById("array").innerHTML = 'Original array: ' + arr;
+    let num = 0;
+    for (let j = 0, k = arr.length - 1; j < k; j++, k--) {
+        num = arr[j];
+        arr[j] = arr[k];
+        arr[k] = num;
+    }
+    document.getElementById("result").innerHTML = 'Reversed array: ' + arr;
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<button type="button" onclick="window.location.reload()">Reload</button>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input length of array:'))
+    for (let i = 0; i < leng; i++) {
+        arr.push(Math.floor(Math.random() * (100 - (-100) + 1)) - 100);
+    }
+    document.getElementById("array").innerHTML = 'Original array: ' + arr;
+    arr.sort((a, b) => b - a);
+    document.getElementById("result").innerHTML = 'Sorted array: ' + arr;
+</script>
+</body>
+</html>
