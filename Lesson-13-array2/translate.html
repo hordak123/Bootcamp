@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Translate</title>
+</head>
+<body>
+<input type="text" placeholder="Enter a word" id="input">
+<input type="button" value="Translate" onclick="trans()">
+<p id="output"></p>
+
+<script>
+    function trans() {
+        const eng = ['car', 'bed', 'spoon', 'toy', 'star', 'you', 'me', 'carpet', 'hill', 'bike'];
+        const vie = ['xe hơi', 'giường', 'thìa', 'đồ chơi', 'ngôi sao', 'bạn', 'tôi', 'tấm thảm', 'ngọn đồi', 'xe đạp'];
+
+        let wordEng = document.getElementById("input").value.trim().toLowerCase();
+
+        const index = eng.indexOf(wordEng);
+        const output = document.getElementById("output");
+
+        if (index !== -1) {
+            output.textContent = `${wordEng} nghĩa là ${vie[index]}`;
+        } else if (wordEng === '') {
+            output.textContent = 'Vui lòng nhập từ tiếng Anh.';
+        } else {
+            output.textContent = `Không tìm thấy từ "${wordEng}"`;
+        }
+    }
+</script>
+</body>
+</html>
