@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<button type="button" onclick="window.location.reload()">Reload</button>
+<script>
+   let arr = [];
+   let col = parseInt(prompt('Input column of array:'));
+   let row = parseInt(prompt('Input row of array:'));
+   for (let i = 0; i < row; i++) {
+       arr[i] = [];
+       for (let j = 0; j < col; j++) {
+           arr[i][j] = Math.floor(Math.random() * (100 - (-100) + 1)) - 100;
+       }
+   }
+   document.getElementById("array").innerHTML = 'Array: ' + arr;
+   for (let i = 0; i < row; i++) {
+       document.getElementById("result").innerHTML += 'Row ' + i + ': </br>';
+       for (let j = 0; j < col; j++) {
+           document.getElementById("result").innerHTML += '&nbsp&nbsp&nbsp' + arr[i][j] + '</br>';
+       }
+   }
+</script>
+</body>
+</html>

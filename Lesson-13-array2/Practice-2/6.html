@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input length of array:'));
+    let abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789--------------------_';
+    for (let i = 0; i < leng; i++) {
+        let e = abc[Math.floor(Math.random() * abc.length)];
+        arr.push(e);
+    }
+    document.getElementById('array').innerHTML = 'Original array: ' + arr;
+    for (let i = 0; i < leng; i++) {
+        if (arr[i] === '-') {
+            arr[i] = '_';
+        }
+    }
+    document.getElementById('result').innerHTML = 'Replaced array: ' + arr;
+</script>
+</body>
+</html>

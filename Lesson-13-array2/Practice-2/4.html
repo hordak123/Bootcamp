@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>4</title>
+</head>
+<body>
+<p id="string"></p>
+<p id="result"></p>
+<script>
+    let str = prompt('Input a sentence:');
+    let arr = str.split(' ');
+    document.getElementById('string').innerHTML = 'Sentence: ' + str;
+    document.getElementById('result').innerHTML = 'There are ' + arr.length + ' words in sentence';
+</script>
+</body>
+</html>

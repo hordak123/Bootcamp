@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input length of array:'));
+    for (let i = 0; i < leng; i++) {
+        let p = prompt('Input element no. ' + (i + 1));
+        arr.push(p);
+    }
+    document.getElementById("result").innerHTML = 'Original array: ' + arr + '</br></br>';
+    let change;
+    for (let i = 0, j = arr.length - 1; i < j; i++,j--) {
+        change = arr[i];
+        arr[i] = arr[j];
+        arr[j] = change;
+    }
+    document.getElementById("result").innerHTML += 'Reversed array: ' + arr.join('');
+</script>
+</body>
+</html>

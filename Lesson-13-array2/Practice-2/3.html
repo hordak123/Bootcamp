@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<p id="array"></p>
+<p id="result"></p>
+<script>
+    let arr = [];
+    let leng = parseInt(prompt('Input length of array:'));
+    let abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    for (let i = 0; i < leng; i++) {
+        let e = abc[Math.floor(Math.random() * abc.length)];
+        arr.push(e);
+    }
+    document.getElementById('array').innerHTML = arr;
+    let isNumber = 0;
+    for (let i = 0; i < leng; i++) {
+        if (parseInt(arr[i]) >= 0){
+            isNumber++;
+        }
+    }
+    document.getElementById('result').innerHTML = 'There is ' + isNumber + ' numbers in array';
+</script>
+</body>
+</html>
