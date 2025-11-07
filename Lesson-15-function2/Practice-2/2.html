@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+   let radius = parseFloat(prompt(`Input circle's radius:`));
+   function calculateArea(radius) {
+       let area = radius * radius * Math.PI;
+       document.getElementById("result").innerHTML += 'Area: ' + area.toFixed(2) + '<br>';
+   }
+   function calculateCircumference(radius) {
+       let circumference = radius * 2 * Math.PI;
+       document.getElementById("result").innerHTML += 'Circumference: ' + circumference.toFixed(2) + '<br>';
+   }
+
+   calculateArea(radius);
+   calculateCircumference(radius);
+</script>
+</body>
+</html>

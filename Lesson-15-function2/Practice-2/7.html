@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>7</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    let firstNumber = parseInt(prompt("Enter first number"));
+    let secondNumber = parseInt(prompt("Enter second number"));
+    document.getElementById("result").innerHTML += `Before:<br>
+        First number: ${firstNumber}<br>
+        Second number: ${secondNumber}<br><br>`;
+
+    function reverse() {
+        let temp = firstNumber;
+        firstNumber = secondNumber;
+        secondNumber = temp;
+    }
+
+    reverse();
+    document.getElementById("result").innerHTML += `After:<br>
+        First number: ${firstNumber}<br>
+        Second number: ${secondNumber}`;
+</script>
+</body>
+</html>

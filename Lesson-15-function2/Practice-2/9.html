@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9</title>
+</head>
+<body>
+<script>
+    let str = prompt('Input a string:');
+    let test = prompt('Input a character:');
+
+    function isIn() {
+        while (test.split('').length !== 1) {
+            test = prompt('Input a single character:');
+        }
+
+        let count = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === test) count++;
+        }
+
+        return count === 0 ? -1 : count;
+    }
+
+    document.write(isIn());
+</script>
+</body>
+</html>

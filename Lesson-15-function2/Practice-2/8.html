@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8</title>
+</head>
+<body>
+<script>
+    let leng = parseInt(prompt('Input array length'));
+    let numbers = [];
+    for (let i = 0; i < leng; i++) {
+        let number = parseInt(prompt('Input number no. ' + (i + 1)));
+        numbers.push(number);
+    }
+
+    function reverse(array) {
+        let reversedArray = [];
+        for (let i = array.length - 1; i >= 0; i--) {
+            reversedArray.push(array[i]);
+        }
+        return reversedArray;
+    }
+
+    document.write('Reversed Array: ' + reverse(numbers));
+</script>
+</body>
+</html>

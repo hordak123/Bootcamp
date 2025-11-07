@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<script>
+    let number = parseInt(prompt("Enter an integer:"));
+
+    function factorial(number) {
+        if (number === 0 || number === 1) return 1;
+        else return number * factorial(number - 1);
+    }
+
+    document.write(number + '! = ' + factorial(number));
+</script>
+</body>
+</html>
