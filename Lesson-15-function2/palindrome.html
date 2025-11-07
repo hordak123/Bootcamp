@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Palindrome</title>
+</head>
+<body>
+<script>
+    let text = prompt('Input a word');
+
+    function isPalindrome(str) {
+        if (str.length <= 1) return true;
+        if (str[0] !== str[str.length - 1]) return false;
+        return isPalindrome(str.slice(1, -1));
+    }
+    
+    document.write(isPalindrome(text));
+</script>
+
+</body>
+</html>
