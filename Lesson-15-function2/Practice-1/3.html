@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<script>
+    const getSum = () => {
+        let firstNumber = parseFloat(prompt('Input first number:'));
+        let secondNumber = parseFloat(prompt('Input second number:'));
+        while (firstNumber > secondNumber) {
+            alert('First number is greater than second number, please input again!');
+            firstNumber = parseFloat(prompt('Input first number:'));
+            secondNumber = parseFloat(prompt('Input second number:'));
+            if (firstNumber <= secondNumber) {
+                break;
+            }
+        }
+        let sum = firstNumber + secondNumber;
+        document.write('Sum of two numbers is ' + sum);
+    }
+
+    getSum();
+</script>
+</body>
+</html>

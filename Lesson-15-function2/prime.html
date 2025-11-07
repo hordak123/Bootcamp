@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    const isPrime = (number) => {
+        if (number === 1) return false;
+        if (number === 2) return true;
+        if (number > 2) {
+            let sqrtnumber = Math.sqrt(number);
+            for (let i = 2; i <= sqrtnumber; i++) {
+                if (number % i === 0) return false;
+            }
+            return true;
+        }
+    }
+
+    let count = parseInt(prompt('Input a number'));
+    for (let i = 0; i < count; i++) {
+        if (isPrime(i)) document.getElementById('result').innerHTML += i + '<br>';
+    }
+</script>
+</body>
+</html>
