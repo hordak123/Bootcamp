@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rectangle</title>
+</head>
+<body>
+<canvas id="myCanvas" width="400" height="300" style="border:1px solid #d3d3d3;"></canvas>
+<p id="result"></p>
+<button type="button" onclick="runAgain()">Another Rectangle</button>
+<script>
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    let rectangle;
+
+    function Rectangle(length, width) {
+        this.length = length;
+        this.width = width;
+        this.getArea = function () {
+            return length * width;
+        }
+        this.getPerimeter = function () {
+            return (length + width) * 2;
+        }
+    }
+
+    function createRectangle() {
+        let length = Math.random() * (canvas.height - 2 * 50);
+        let width = Math.random() * (canvas.width - 2 * 50);
+        rectangle = new Rectangle(length, width);
+        ctx.fillStyle = "blue";
+        ctx.fillRect((canvas.width - rectangle.width) / 2, (canvas.height - rectangle.length) / 2, rectangle.width, rectangle.length);
+    }
+
+    function runAgain() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        createRectangle();
+        document.getElementById("result").innerHTML = `Area: ${rectangle.getArea().toFixed(2)} <br> Perimeter: ${rectangle.getPerimeter().toFixed(2)} <br>`;
+    }
+
+    runAgain();
+</script>
+</body>
+</html>
