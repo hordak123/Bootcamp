@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+</head>
+<body>
+<script>
+    let temperature;
+
+    function Temperature(C) {
+        this.C = C;
+        this.getF = function () {
+            return this.C * 9 / 5 + 32;
+        }
+        this.getK = function () {
+            return this.C + 273;
+        }
+    }
+
+    function inputTemperature() {
+        let C = parseFloat(prompt('Temperature'));
+        temperature = new Temperature(C);
+        alert('Temperature: ' + C + 'oC = ' + temperature.getF().toFixed(2) + 'oF = ' + temperature.getK().toFixed(2) + 'K');
+    }
+
+    inputTemperature();
+</script>
+</body>
+</html>
