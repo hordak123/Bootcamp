@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Street Racing Game</title>
+</head>
+<body>
+<center>
+    <canvas id="myCanvas" width="500" height="700" style="border: 1px solid black"></canvas>
+</center>
+<script>
+    let ctx = document.getElementById("myCanvas").getContext("2d");
+    let game = "start";
+
+    let car = new Car(222.5, 550, 55, 110);
+    let brick1 = new Obstacles(100, 100, 100, 60);
+    brick1.randomLocation();
+    let brick2 = new Obstacles(100, 100, 100, 60);
+    brick2.randomLocation(brick1.x);
+    let money = new Obstacles(100, 100, 100, 100);
+    money.randomLocation();
+
+    let backGroundImg = new Image();
+    backGroundImg.src = 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=500&h=700&fit=crop';
+
+    let carImg = new Image();
+    carImg.src = "car.png";
+
+    let moneyImg = new Image();
+    moneyImg.src = "money.png";
+
+    let brickImg = new Image();
+    brickImg.src = "brick-wall-texture-rustic-design-png.png";
+
+    function createBackGround() {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(0, 0, 500, 700);
+
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 5;
+        ctx.setLineDash([30, 20]);
+        ctx.beginPath();
+        ctx.moveTo(166, 0);
+        ctx.lineTo(166, 700);
+        ctx.moveTo(333, 0);
+        ctx.lineTo(333, 700);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        if (backGroundImg.complete) {
+            ctx.globalAlpha = 0.3;
+            ctx.drawImage(backGroundImg, 0, 0, 500, 700);
+            ctx.globalAlpha = 1;
+        }
+    }
+
+    function Car(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.score = 0;
+
+        this.moveLeft = function () {
+            if (this.x > 0) {
+                this.x = Math.max(55, this.x - 166);
+            }
+        }
+
+        this.moveRight = function () {
+            if (this.x < 390) {
+                this.x = Math.min(390, this.x + 166);
+            }
+        }
+
+        this.checkCollision = function (obstacle, isMoney) {
+            if (
+                this.x < obstacle.x + obstacle.width &&
+                this.x + this.width > obstacle.x &&
+                this.y < obstacle.y + obstacle.height &&
+                this.y + this.height > obstacle.y
+            ) {
+                if (isMoney) {
+                    this.score += 100 + Math.min(50, Math.floor(this.score * 0.01));
+                    obstacle.randomLocation();
+                } else {
+                    alert('YOUR CAR CRASHED!!! YOUR SCORE IS: ' + this.score);
+                    location.reload();
+                }
+            }
+        }
+
+        this.checkpoint = function () {
+            this.checkCollision(money, true);
+            this.checkCollision(brick1, false);
+            this.checkCollision(brick2, false);
+        }
+
+        this.drawCar = function () {
+            this.checkpoint();
+            if (carImg.complete) {
+                ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
+            }
+
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+            ctx.font = "bold 50px Arial";
+            ctx.strokeText(this.score, 20, 60);
+            ctx.fillText(this.score, 20, 60);
+        }
+    }
+
+    function Obstacles(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+
+        this.drop = function () {
+            this.y += 5;
+        }
+
+        this.randomLocation = function (forbiddenX) {
+            this.y = Math.random() * (-100 - (-300)) + (-300);
+            let lanes = [33, 200, 366];
+
+            if (forbiddenX) {
+                lanes = lanes.filter(l => l !== forbiddenX);
+            }
+            this.x = lanes[Math.floor(Math.random() * lanes.length)];
+        }
+
+        this.drawMoney = function () {
+            if (moneyImg.complete) {
+                ctx.drawImage(moneyImg, this.x, this.y, this.width, this.height);
+            }
+
+            if (this.y > 700) {
+                this.randomLocation();
+                if (Math.abs(this.y - brick1.y) < 300) {
+                    this.randomLocation(brick1.x);
+                } else if (Math.abs(this.y - brick2.y) < 300) {
+                    this.randomLocation(brick2.x);
+                }
+            }
+        }
+
+        this.drawBrick1 = function () {
+            if (brickImg.complete) {
+                ctx.drawImage(brickImg, this.x, this.y, this.width, this.height);
+            }
+
+            if (this.y > 700) {
+                this.randomLocation(brick2.x);
+            }
+        }
+
+        this.drawBrick2 = function () {
+            if (brickImg.complete) {
+                ctx.drawImage(brickImg, this.x, this.y, this.width, this.height);
+            }
+
+            if (this.y > 700) {
+                this.randomLocation(brick1.x);
+            }
+        }
+    }
+
+    function moveObject() {
+        ctx.clearRect(0, 0, 500, 700);
+        createBackGround();
+
+        if (game == "start") {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(0, 0, 500, 700);
+
+            ctx.font = "60px Arial";
+            ctx.fillStyle = 'yellow';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+
+            ctx.strokeText('Press', 170, 300);
+            ctx.fillText('Press', 170, 300);
+            ctx.strokeText('SPACE', 140, 370);
+            ctx.fillText('SPACE', 140, 370);
+
+            ctx.font = "30px Arial";
+            ctx.fillStyle = 'white';
+            ctx.fillText('Use ← → to move', 120, 450);
+            ctx.fillText('Collect 💰 | Avoid 🧱', 100, 500);
+        }
+
+        if (game == "play") {
+            car.drawCar();
+            money.drawMoney();
+            brick1.drawBrick1();
+            brick2.drawBrick2();
+        }
+    }
+
+    function drop() {
+        if (game == "play") {
+            money.drop();
+            brick1.drop();
+            brick2.drop();
+        }
+        moveObject();
+
+        let speed = Math.max(8, 20 - car.score * 0.005);
+        setTimeout(drop, speed);
+    }
+
+    drop();
+
+    function pressKey(event) {
+        switch (event.which) {
+            case 37: // Left arrow
+                if (game == "play") {
+                    car.moveLeft();
+                    moveObject();
+                }
+                break;
+            case 39: // Right arrow
+                if (game == "play") {
+                    car.moveRight();
+                    moveObject();
+                }
+                break;
+            case 32: // Space
+                game = "play";
+                event.preventDefault();
+                break;
+        }
+    }
+
+    window.addEventListener("keydown", pressKey);
+</script>
+</body>
+</html>

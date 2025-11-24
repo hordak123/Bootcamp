@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TAKE MY OAK!</title>
+</head>
+<body>
+<center>
+    <canvas id="myCanvas" width="500" height="700" style="border: 1px solid black"></canvas>
+</center>
+<script>
+    let ctx = document.getElementById('myCanvas').getContext('2d');
+    let game = "start";
+    let scrat = new Character(200, 550, 100, 100);
+    let oak = new Obstacles(100, 100, 70, 70);
+    oak.randomLocation();
+    let female = new Obstacles(100, 100, 100, 100);
+    female.randomLocation();
+
+    // Preload images
+    let backGroundImg = new Image();
+    backGroundImg.src = 'https://images.unsplash.com/photo-1511497584788-876760111969?w=500&h=700&fit=crop';
+
+    let scratImg = new Image();
+    scratImg.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=scrat&backgroundColor=transparent';
+
+    let oakImg = new Image();
+    oakImg.src = 'https://api.dicebear.com/7.x/icons/svg?seed=acorn&backgroundColor=transparent';
+
+    let femaleImg = new Image();
+    femaleImg.src = 'https://api.dicebear.com/7.x/bottts/svg?seed=female&backgroundColor=ff69b4';
+
+    function createBackGround() {
+        ctx.fillStyle = '#87CEEB';
+        ctx.fillRect(0, 0, 500, 700);
+        if (backGroundImg.complete) {
+            ctx.drawImage(backGroundImg, 0, 0, 500, 700);
+        }
+    }
+
+    function Character(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.score = 0;
+
+        this.moveLeft = function () {
+            if (this.x > 0) {
+                this.x = Math.max(0, this.x - 60);
+            }
+        }
+
+        this.moveRight = function () {
+            if (this.x < 400) {
+                this.x = Math.min(400, this.x + 60);
+            }
+        }
+
+        this.checkCollision = function(obstacle, isOak) {
+            // Kiểm tra va chạm với margin 20px
+            if (
+                this.x < obstacle.x + obstacle.width - 20 &&
+                this.x + this.width - 20 > obstacle.x &&
+                this.y < obstacle.y + obstacle.height &&
+                this.y + this.height > obstacle.y
+            ) {
+                if (isOak) {
+                    this.score++;
+                    obstacle.randomLocation();
+                } else {
+                    alert('SHE STOLE YOUR OAK!!! YOUR SCORE IS: ' + this.score);
+                    location.reload();
+                }
+            }
+        }
+
+        this.checkPoint = function () {
+            this.checkCollision(oak, true);
+            this.checkCollision(female, false);
+        }
+
+        this.drawScrat = function () {
+            this.checkPoint();
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+
+            if (scratImg.complete) {
+                ctx.drawImage(scratImg, this.x, this.y, this.width, this.height);
+            }
+
+            // Vẽ điểm
+            ctx.fillStyle = 'white';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.font = "bold 50px Arial";
+            ctx.strokeText(this.score, 430, 60);
+            ctx.fillText(this.score, 430, 60);
+        }
+    }
+
+    function Obstacles(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+
+        this.dropDown = function () {
+            this.y += 5;
+        }
+
+        this.randomLocation = function () {
+            this.y = -100;
+            this.x = Math.random() * (500 - this.width);
+        }
+
+        this.drawOak = function () {
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+
+            if (oakImg.complete) {
+                ctx.drawImage(oakImg, this.x, this.y, this.width, this.height);
+            }
+
+            if (this.y > 700) {
+                this.randomLocation();
+            }
+        }
+
+        this.drawFemale = function () {
+            ctx.fillStyle = '#FF69B4';
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+
+            if (femaleImg.complete) {
+                ctx.drawImage(femaleImg, this.x, this.y, this.width, this.height);
+            }
+
+            if (this.y > 700) {
+                this.randomLocation();
+            }
+        }
+    }
+
+    function moveOak() {
+        ctx.clearRect(0, 0, 500, 700);
+        createBackGround();
+
+        if (game == "start") {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+            ctx.fillRect(0, 0, 500, 700);
+
+            ctx.font = "60px Arial";
+            ctx.fillStyle = 'yellow';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+
+            ctx.strokeText('Press', 170, 300);
+            ctx.fillText('Press', 170, 300);
+            ctx.strokeText('SPACE', 140, 370);
+            ctx.fillText('SPACE', 140, 370);
+
+            ctx.font = "30px Arial";
+            ctx.fillStyle = 'white';
+            ctx.fillText('Use ← → to move', 120, 450);
+        }
+
+        if (game == "play") {
+            scrat.drawScrat();
+            oak.drawOak();
+            female.drawFemale();
+        }
+    }
+
+    function oakDrop() {
+        if (game == "play") {
+            oak.dropDown();
+            female.dropDown();
+        }
+        moveOak();
+
+        // Tốc độ tăng dần nhưng có giới hạn
+        let speed = Math.max(20, 40 - scrat.score);
+        setTimeout(oakDrop, speed);
+    }
+
+    oakDrop();
+
+    function pressKey(event) {
+        switch (event.which) {
+            case 37: // Left arrow
+                if (game == "play") {
+                    scrat.moveLeft();
+                    moveOak();
+                }
+                break;
+            case 39: // Right arrow
+                if (game == "play") {
+                    scrat.moveRight();
+                    moveOak();
+                }
+                break;
+            case 32: // Space
+                game = "play";
+                event.preventDefault();
+                break;
+        }
+    }
+
+    window.addEventListener('keydown', pressKey);
+</script>
+</body>
+</html>
